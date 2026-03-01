@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Decision Lab v2</title>
+    <!-- Modern Typography: Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Animated Gradient Background -->
+    <div class="bg-wrapper">
+        <div class="bg-shape shape-1"></div>
+        <div class="bg-shape shape-2"></div>
+        <div class="bg-shape shape-3"></div>
+        <div class="bg-shape shape-4"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="main-header glassmorphism">
+            <div class="logo" id="logo-trigger">
+                <span class="logo-icon">✧</span>
+                <span class="logo-text">Smart Decision <span class="gradient-text">Lab</span></span>
+            </div>
+            <nav>
+                <button class="nav-btn active" id="btn-home">Home</button>
+                <div class="theme-toggle-wrapper">
+                    <button class="icon-btn theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+                        <span class="icon-sun">☼</span>
+                        <span class="icon-moon">☾</span>
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content" id="main-content">
+
+            <!-- Home Screen -->
+            <section class="screen active" id="screen-home">
+                <div class="hero-section">
+                    <div class="badge-tag">v2.0 Advanced Engine</div>
+                    <h1 class="hero-title">Navigate Your <span class="gradient-text">Future</span> Accurately</h1>
+                    <p class="hero-subtitle">Multi-step intelligent frameworks to structure your career, skills,
+                        business ideas, and study routines.</p>
+                </div>
+
+                <!-- Tool Cards Grid -->
+                <div class="tools-grid">
+                    <!-- Career Decision Helper -->
+                    <div class="tool-card glass-panel hover-glow" data-tool="career">
+                        <div class="tool-icon gradient-text">⟡</div>
+                        <h2 class="tool-title">Career Decision Helper</h2>
+                        <p class="tool-desc">Select industries, environments, and salary expectations to find your
+                            perfect professional role.</p>
+                        <div class="tool-footer">
+                            <span class="step-indicator">5 Steps</span>
+                            <button class="start-btn">Start <span class="arrow">→</span></button>
+                        </div>
+                        <div class="card-glow"></div>
+                    </div>
+
+                    <!-- Skill Learning Advisor -->
+                    <div class="tool-card glass-panel hover-glow" data-tool="skill">
+                        <div class="tool-icon gradient-text">⌘</div>
+                        <h2 class="tool-title">Skill Learning Advisor</h2>
+                        <p class="tool-desc">Filter by technology, creative arts, business, or freelancing combined with
+                            time availability.</p>
+                        <div class="tool-footer">
+                            <span class="step-indicator">4 Steps</span>
+                            <button class="start-btn">Start <span class="arrow">→</span></button>
+                        </div>
+                        <div class="card-glow"></div>
+                    </div>
+
+                    <!-- Business Idea Selector -->
+                    <div class="tool-card glass-panel hover-glow" data-tool="business">
+                        <div class="tool-icon gradient-text">◈</div>
+                        <h2 class="tool-title">Business Idea Selector</h2>
+                        <p class="tool-desc">Discover tailored online businesses and local scalable startups based on
+                            your budget.</p>
+                        <div class="tool-footer">
+                            <span class="step-indicator">3 Steps</span>
+                            <button class="start-btn">Start <span class="arrow">→</span></button>
+                        </div>
+                        <div class="card-glow"></div>
+                    </div>
+
+                    <!-- Study Planner Tool -->
+                    <div class="tool-card glass-panel hover-glow" data-tool="study">
+                        <div class="tool-icon gradient-text">◎</div>
+                        <h2 class="tool-title">Study Planner Tool</h2>
+                        <p class="tool-desc">Create highly focused schedules, exam prep modes, and long-term academic
+                            tracking.</p>
+                        <div class="tool-footer">
+                            <span class="step-indicator">3 Steps</span>
+                            <button class="start-btn">Start <span class="arrow">→</span></button>
+                        </div>
+                        <div class="card-glow"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interactive Flow Screen -->
+            <section class="screen" id="screen-flow">
+                <div class="flow-container glass-box">
+                    <div class="flow-header">
+                        <button class="back-btn" id="btn-flow-back">← Cancel</button>
+                        <div class="step-counter" id="step-counter">Step 1 of 5</div>
+                    </div>
+
+                    <!-- Progress Indicators -->
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="flow-progress"></div>
+                    </div>
+
+                    <div class="question-container" id="question-container">
+                        <!-- Dynamic Question Header -->
+                        <h2 class="question-text" id="question-text">Question formatting...</h2>
+                        <p class="question-subtext" id="question-subtext">Context details load here.</p>
+
+                        <!-- Dynamic Options -->
+                        <div class="options-grid" id="options-grid">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Result Screen -->
+            <section class="screen" id="screen-result">
+                <div class="result-container">
+                    <button class="back-btn" id="btn-result-back">← Back to Tools</button>
+
+                    <div class="result-card glass-box glowing-border">
+                        <div class="result-badge">Analysis Completed</div>
+                        <h2 class="result-title" id="result-title">Recommendation</h2>
+                        <div class="result-content" id="result-content">
+                            <!-- Dynamic Result Details -->
+                        </div>
+                        <div class="action-buttons">
+                            <button class="primary-btn pulse-glow" id="btn-restart-tool">Retake Selection</button>
+                            <button class="secondary-btn" id="btn-explore-others">Explore More Tools</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
