@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Decision Lab v2</title>
+    <title>Smart Decision Lab - Pro</title>
     <!-- Modern Typography: Outfit & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
+    <!-- Phosphor Icons (for futuristic minimalist icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -23,137 +25,291 @@
         <div class="bg-shape shape-4"></div>
     </div>
 
-    <div class="app-container">
-        <!-- Header -->
-        <header class="main-header glassmorphism">
-            <div class="logo" id="logo-trigger">
+    <div class="app-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar glass-panel">
+            <div class="logo">
                 <span class="logo-icon">✧</span>
-                <span class="logo-text">Smart Decision <span class="gradient-text">Lab</span></span>
+                <span class="logo-text">SD<span class="gradient-text">Lab</span></span>
             </div>
-            <nav>
-                <button class="nav-btn active" id="btn-home">Home</button>
-                <div class="theme-toggle-wrapper">
-                    <button class="icon-btn theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
-                        <span class="icon-sun">☼</span>
-                        <span class="icon-moon">☾</span>
-                    </button>
-                </div>
+
+            <nav class="nav-menu">
+                <button class="nav-item active" data-target="screen-dashboard">
+                    <i class="ph ph-squares-four"></i>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-item" data-target="screen-tools">
+                    <i class="ph ph-compass-tool"></i>
+                    <span>Tools</span>
+                </button>
+                <button class="nav-item" data-target="screen-tracker">
+                    <i class="ph ph-chart-line-up"></i>
+                    <span>Growth Tracker</span>
+                </button>
+                <button class="nav-item" data-target="screen-history">
+                    <i class="ph ph-clock-counter-clockwise"></i>
+                    <span>History</span>
+                </button>
             </nav>
-        </header>
+
+            <div class="sidebar-footer">
+                <div class="theme-toggle-wrapper" id="theme-toggle">
+                    <i class="ph ph-sun icon-sun"></i>
+                    <i class="ph ph-moon icon-moon"></i>
+                    <span class="theme-text">Toggle Theme</span>
+                </div>
+            </div>
+        </aside>
 
         <!-- Main Content Area -->
-        <main class="main-content" id="main-content">
-
-            <!-- Home Screen -->
-            <section class="screen active" id="screen-home">
-                <div class="hero-section">
-                    <div class="badge-tag">v2.0 Advanced Engine</div>
-                    <h1 class="hero-title">Navigate Your <span class="gradient-text">Future</span> Accurately</h1>
-                    <p class="hero-subtitle">Multi-step intelligent frameworks to structure your career, skills,
-                        business ideas, and study routines.</p>
+        <main class="main-content">
+            <!-- Topbar (Search & Profile) -->
+            <header class="topbar">
+                <div class="search-box glass-panel">
+                    <i class="ph ph-magnifying-glass"></i>
+                    <input type="text" id="global-search" placeholder="Search tools, careers, skills...">
+                    <div class="search-results hidden" id="search-results"></div>
                 </div>
-
-                <!-- Tool Cards Grid -->
-                <div class="tools-grid">
-                    <!-- Career Decision Helper -->
-                    <div class="tool-card glass-panel hover-glow" data-tool="career">
-                        <div class="tool-icon gradient-text">⟡</div>
-                        <h2 class="tool-title">Career Decision Helper</h2>
-                        <p class="tool-desc">Select industries, environments, and salary expectations to find your
-                            perfect professional role.</p>
-                        <div class="tool-footer">
-                            <span class="step-indicator">5 Steps</span>
-                            <button class="start-btn">Start <span class="arrow">→</span></button>
-                        </div>
-                        <div class="card-glow"></div>
-                    </div>
-
-                    <!-- Skill Learning Advisor -->
-                    <div class="tool-card glass-panel hover-glow" data-tool="skill">
-                        <div class="tool-icon gradient-text">⌘</div>
-                        <h2 class="tool-title">Skill Learning Advisor</h2>
-                        <p class="tool-desc">Filter by technology, creative arts, business, or freelancing combined with
-                            time availability.</p>
-                        <div class="tool-footer">
-                            <span class="step-indicator">4 Steps</span>
-                            <button class="start-btn">Start <span class="arrow">→</span></button>
-                        </div>
-                        <div class="card-glow"></div>
-                    </div>
-
-                    <!-- Business Idea Selector -->
-                    <div class="tool-card glass-panel hover-glow" data-tool="business">
-                        <div class="tool-icon gradient-text">◈</div>
-                        <h2 class="tool-title">Business Idea Selector</h2>
-                        <p class="tool-desc">Discover tailored online businesses and local scalable startups based on
-                            your budget.</p>
-                        <div class="tool-footer">
-                            <span class="step-indicator">3 Steps</span>
-                            <button class="start-btn">Start <span class="arrow">→</span></button>
-                        </div>
-                        <div class="card-glow"></div>
-                    </div>
-
-                    <!-- Study Planner Tool -->
-                    <div class="tool-card glass-panel hover-glow" data-tool="study">
-                        <div class="tool-icon gradient-text">◎</div>
-                        <h2 class="tool-title">Study Planner Tool</h2>
-                        <p class="tool-desc">Create highly focused schedules, exam prep modes, and long-term academic
-                            tracking.</p>
-                        <div class="tool-footer">
-                            <span class="step-indicator">3 Steps</span>
-                            <button class="start-btn">Start <span class="arrow">→</span></button>
-                        </div>
-                        <div class="card-glow"></div>
-                    </div>
+                <div class="user-profile glass-panel">
+                    <span class="user-avatar">U</span>
+                    <span class="user-status">Pro Member</span>
                 </div>
-            </section>
+            </header>
 
-            <!-- Interactive Flow Screen -->
-            <section class="screen" id="screen-flow">
-                <div class="flow-container glass-box">
-                    <div class="flow-header">
-                        <button class="back-btn" id="btn-flow-back">← Cancel</button>
-                        <div class="step-counter" id="step-counter">Step 1 of 5</div>
+            <div class="screens-wrapper">
+
+                <!-- Dashboard Screen -->
+                <section class="screen active" id="screen-dashboard">
+                    <div class="dashboard-header">
+                        <h1 class="page-title">Welcome back, <span class="gradient-text">Explorer</span></h1>
+                        <p class="page-subtitle">Your AI-driven personal and professional command center.</p>
                     </div>
 
-                    <!-- Progress Indicators -->
-                    <div class="progress-bar-container">
-                        <div class="progress-bar" id="flow-progress"></div>
+                    <div class="bento-grid">
+                        <!-- Continue Widget -->
+                        <div class="bento-card glass-box continue-widget" id="continue-widget">
+                            <div class="card-header">
+                                <h3><i class="ph ph-play-circle"></i> Continue Session</h3>
+                            </div>
+                            <div class="card-body">
+                                <p id="continue-text">No active session found.</p>
+                                <button class="primary-btn small hidden" id="btn-resume">Resume Flow</button>
+                            </div>
+                        </div>
+
+                        <!-- Core Scores Widget -->
+                        <div class="bento-card glass-box scores-widget">
+                            <div class="card-header">
+                                <h3><i class="ph ph-chart-donut"></i> Average Match Scores</h3>
+                            </div>
+                            <div class="card-body scores-flex" id="dashboard-scores">
+                                <div class="score-ring">
+                                    <svg viewBox="0 0 36 36" class="circular-chart cyan">
+                                        <path class="circle-bg"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path class="circle" stroke-dasharray="85, 100"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <text x="18" y="20.35" class="percentage">85%</text>
+                                    </svg>
+                                    <span class="score-label">Career</span>
+                                </div>
+                                <div class="score-ring">
+                                    <svg viewBox="0 0 36 36" class="circular-chart purple">
+                                        <path class="circle-bg"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path class="circle" stroke-dasharray="92, 100"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <text x="18" y="20.35" class="percentage">92%</text>
+                                    </svg>
+                                    <span class="score-label">Productivity</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Decisions Widget -->
+                        <div class="bento-card glass-box recent-widget col-span-2">
+                            <div class="card-header">
+                                <h3><i class="ph ph-lightning"></i> Recent Insights</h3>
+                                <button class="text-btn" id="btn-view-all-history">View All →</button>
+                            </div>
+                            <div class="card-body">
+                                <div class="recent-list" id="dashboard-recent-list">
+                                    <!-- Populated by JS -->
+                                    <p class="empty-state">Complete a tool to see your insights here.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tools Library Screen -->
+                <section class="screen" id="screen-tools">
+                    <div class="dashboard-header">
+                        <h1 class="page-title">Decision <span class="gradient-text">Tools</span></h1>
+                        <p class="page-subtitle">Advanced AI logic engines to chart your best path forward.</p>
                     </div>
 
-                    <div class="question-container" id="question-container">
-                        <!-- Dynamic Question Header -->
-                        <h2 class="question-text" id="question-text">Question formatting...</h2>
-                        <p class="question-subtext" id="question-subtext">Context details load here.</p>
+                    <div class="tools-grid">
+                        <!-- Career -->
+                        <div class="tool-card glass-panel hover-glow" data-tool="career">
+                            <div class="tool-icon gradient-text"><i class="ph ph-briefcase"></i></div>
+                            <h2 class="tool-title">Career Pathfinder</h2>
+                            <p class="tool-desc">Dynamic logic to find your perfect role based on industry, skills, and
+                                work environments.</p>
+                            <div class="tool-footer">
+                                <span class="tag cyan">AI Powered</span>
+                                <button class="start-btn">Launch <i class="ph ph-arrow-right"></i></button>
+                            </div>
+                            <div class="card-glow"></div>
+                        </div>
 
-                        <!-- Dynamic Options -->
-                        <div class="options-grid" id="options-grid">
+                        <!-- Skill -->
+                        <div class="tool-card glass-panel hover-glow" data-tool="skill">
+                            <div class="tool-icon gradient-text"><i class="ph ph-code-block"></i></div>
+                            <h2 class="tool-title">Skill Architecture</h2>
+                            <p class="tool-desc">Deep-dive assessment to recommend the exact skills you need to learn
+                                next.</p>
+                            <div class="tool-footer">
+                                <span class="tag purple">Dynamic</span>
+                                <button class="start-btn">Launch <i class="ph ph-arrow-right"></i></button>
+                            </div>
+                            <div class="card-glow"></div>
+                        </div>
+
+                        <!-- Business -->
+                        <div class="tool-card glass-panel hover-glow" data-tool="business">
+                            <div class="tool-icon gradient-text"><i class="ph ph-rocket-launch"></i></div>
+                            <h2 class="tool-title">Startup Simulator</h2>
+                            <p class="tool-desc">Budget and ambition-based analysis to find scalable business or
+                                side-hustle ideas.</p>
+                            <div class="tool-footer">
+                                <span class="tag pink">Predictive</span>
+                                <button class="start-btn">Launch <i class="ph ph-arrow-right"></i></button>
+                            </div>
+                            <div class="card-glow"></div>
+                        </div>
+
+                        <!-- Study -->
+                        <div class="tool-card glass-panel hover-glow" data-tool="study">
+                            <div class="tool-icon gradient-text"><i class="ph ph-book-open-text"></i></div>
+                            <h2 class="tool-title">Study Protocol</h2>
+                            <p class="tool-desc">Build optimized daily routines, exam sprints, and focus sessions using
+                                neuroscience principles.</p>
+                            <div class="tool-footer">
+                                <span class="tag cyan">Optimization</span>
+                                <button class="start-btn">Launch <i class="ph ph-arrow-right"></i></button>
+                            </div>
+                            <div class="card-glow"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Interactive Flow Screen -->
+                <section class="screen" id="screen-flow">
+                    <div class="flow-container glass-box">
+                        <div class="flow-header">
+                            <button class="back-btn" id="btn-flow-back"><i class="ph ph-arrow-left"></i> Exit</button>
+                            <div class="flow-actions">
+                                <button class="text-btn" id="btn-save-later"><i class="ph ph-floppy-disk"></i> Save &
+                                    Continue Later</button>
+                                <div class="step-badge" id="step-counter">0%</div>
+                            </div>
+                        </div>
+
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="flow-progress"></div>
+                        </div>
+
+                        <div class="question-container" id="question-container">
+                            <h2 class="question-text" id="question-text">Initializing Engine...</h2>
+                            <p class="question-subtext" id="question-subtext"></p>
+
+                            <div class="options-grid" id="options-grid"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Result Screen -->
+                <section class="screen" id="screen-result">
+                    <div class="result-container">
+                        <div class="flow-header">
+                            <button class="back-btn" id="btn-result-back"><i class="ph ph-arrow-left"></i> Back to
+                                Dashboard</button>
+                            <button class="primary-btn small" id="btn-save-result"><i class="ph ph-bookmark-simple"></i>
+                                Save to Tracker</button>
+                        </div>
+
+                        <div class="result-card glass-box glowing-border">
+                            <div class="result-top-section">
+                                <div class="result-header-info">
+                                    <div class="result-badge" id="result-badge-tag">Analysis Complete</div>
+                                    <h2 class="result-title" id="result-title">Title</h2>
+                                </div>
+
+                                <!-- Compatibility Score -->
+                                <div class="result-score-box">
+                                    <svg viewBox="0 0 36 36" class="circular-chart purple lg">
+                                        <path class="circle-bg"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path class="circle" id="result-score-circle" stroke-dasharray="0, 100"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <text x="18" y="20.35" class="percentage" id="result-score-text">0%</text>
+                                    </svg>
+                                    <span>Match Score</span>
+                                </div>
+                            </div>
+
+                            <div class="result-content" id="result-content">
+                                <!-- Dynamic Context Base -->
+                            </div>
+
+                            <!-- Roadmap / Progression Bar -->
+                            <div class="roadmap-section">
+                                <h3><i class="ph ph-map-trifold"></i> Execution Roadmap</h3>
+                                <div class="roadmap-steps" id="roadmap-steps">
+                                    <!-- Injected -->
+                                </div>
+                            </div>
+
+                            <div class="action-buttons">
+                                <button class="primary-btn pulse-glow" id="btn-restart-tool">Redo Analysis</button>
+                                <button class="secondary-btn" id="btn-explore-others">Explore Tools</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Growth Tracker Screen -->
+                <section class="screen" id="screen-tracker">
+                    <div class="dashboard-header">
+                        <h1 class="page-title">Growth <span class="gradient-text">Tracker</span></h1>
+                        <p class="page-subtitle">Visualize your journey and track your completed milestones.</p>
+                    </div>
+
+                    <div class="tracker-container glass-box">
+                        <div class="timeline" id="growth-timeline">
                             <!-- Injected by JS -->
+                            <div class="empty-state">Save results to build your growth timeline.</div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <!-- Result Screen -->
-            <section class="screen" id="screen-result">
-                <div class="result-container">
-                    <button class="back-btn" id="btn-result-back">← Back to Tools</button>
-
-                    <div class="result-card glass-box glowing-border">
-                        <div class="result-badge">Analysis Completed</div>
-                        <h2 class="result-title" id="result-title">Recommendation</h2>
-                        <div class="result-content" id="result-content">
-                            <!-- Dynamic Result Details -->
-                        </div>
-                        <div class="action-buttons">
-                            <button class="primary-btn pulse-glow" id="btn-restart-tool">Retake Selection</button>
-                            <button class="secondary-btn" id="btn-explore-others">Explore More Tools</button>
-                        </div>
+                <!-- History Screen -->
+                <section class="screen" id="screen-history">
+                    <div class="dashboard-header">
+                        <h1 class="page-title">Decision <span class="gradient-text">History</span></h1>
+                        <p class="page-subtitle">Archive of your past AI recommendations and scores.</p>
+                        <button class="text-btn danger" id="btn-clear-history"><i class="ph ph-trash"></i> Clear All
+                            History</button>
                     </div>
-                </div>
-            </section>
 
+                    <div class="history-grid" id="history-grid">
+                        <!-- Injected by JS -->
+                        <div class="empty-state">No past decisions found.</div>
+                    </div>
+                </section>
+
+            </div>
         </main>
     </div>
 
