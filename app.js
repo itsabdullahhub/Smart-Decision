@@ -34,8 +34,11 @@ const decisionGraph = {
                     { label: "Business, Strategy & Management", next: "c2_biz", val: 'biz' },
                     { label: "Design & Creative Arts", next: "c2_des", val: 'des' },
                     { label: "Artificial Intelligence & Data", next: "c2_tech", val: 'ai' },
-                    { label: "Finance & Economics", next: "c2_biz", val: 'fin' },
-                    { label: "Marketing & Growth", next: "c2_biz", val: 'mkt' }
+                    { label: "Natural & Physical Sciences", next: "c2_science", val: 'sci' },
+                    { label: "Food Technology & Culinary Arts", next: "c2_food", val: 'food' },
+                    { label: "Healthcare & Medicine", next: "c2_health", val: 'health' },
+                    { label: "Education & Teaching", next: "c2_edu", val: 'edu' },
+                    { label: "Engineering (Mechanical/Civil)", next: "c2_eng", val: 'eng' }
                 ]
             },
             c2_tech: {
@@ -65,12 +68,57 @@ const decisionGraph = {
                     { label: "Motion Graphics & 3D", next: "c3", val: '3d' }
                 ]
             },
+            c2_science: {
+                text: "Which scientific discipline fascinates you most?",
+                subtext: "Biology, Chemistry, or Physics?",
+                options: [
+                    { label: "Biological Sciences & Genetics", next: "c3", val: 'bio' },
+                    { label: "Chemistry & Material Science", next: "c3", val: 'chem' },
+                    { label: "Physics & Astronomy", next: "c3", val: 'phys' }
+                ]
+            },
+            c2_food: {
+                text: "What area of the food industry inspires you?",
+                subtext: "Cooking, technology, or management?",
+                options: [
+                    { label: "Professional Chef & Culinary Arts", next: "c3", val: 'chef' },
+                    { label: "Food Science & Technology", next: "c3", val: 'foodtech' },
+                    { label: "Restaurant Management", next: "c3", val: 'rest' }
+                ]
+            },
+            c2_health: {
+                text: "How do you want to impact healthcare?",
+                subtext: "Patient care, administration, or technology?",
+                options: [
+                    { label: "Direct Patient Care (Doctor/Nurse)", next: "c3", val: 'care' },
+                    { label: "Healthcare Administration", next: "c3", val: 'admin' },
+                    { label: "Health-Tech & Digital Health", next: "c3", val: 'healthtech' }
+                ]
+            },
+            c2_edu: {
+                text: "How do you prefer to educate others?",
+                subtext: "Traditional teaching or digital platforms?",
+                options: [
+                    { label: "Traditional Teaching & Academia", next: "c3", val: 'teach' },
+                    { label: "EdTech & Online Learning", next: "c3", val: 'edtech' },
+                    { label: "Counseling & Mentorship", next: "c3", val: 'mentor' }
+                ]
+            },
+            c2_eng: {
+                text: "Which engineering branch interests you?",
+                subtext: "Building physical structures or machines?",
+                options: [
+                    { label: "Mechanical Engineering", next: "c3", val: 'mech' },
+                    { label: "Civil Engineering & Architecture", next: "c3", val: 'civil' },
+                    { label: "Electrical Engineering", next: "c3", val: 'elec' }
+                ]
+            },
             c3: {
                 text: "What is your current skill level?",
                 subtext: "Honesty ensures the most accurate roadmap.",
                 options: [
                     { label: "Absolute Beginner", next: "c4", val: 'beg' },
-                    { label: "Intermediate (Portfolio built)", next: "c4", val: 'int' },
+                    { label: "Intermediate (Some experience/projects)", next: "c4", val: 'int' },
                     { label: "Advanced Professional", next: "c4", val: 'adv' }
                 ]
             },
@@ -110,14 +158,39 @@ const decisionGraph = {
                 else if (sub === 'data') { title = "AI / Data Engineer"; roadmap = ["Deep dive into Python & SQL", "Understand Machine Learning basics", "Deploy an AI-wrapper micro-SaaS"]; }
                 else { title = "Backend Systems Architect"; roadmap = ["Learn Go, Rust, or Node.js", "Master Cloud Infra (AWS/GCP)", "Understand distributed system design"]; }
             } else if (ind === 'des') {
-                title = "Senior Product Designer";
-                roadmap = ["Master Figma & Prototyping", "Study behavioral psychology in UX", "Build 3 massive case studies"];
+                if (sub === 'ux') { title = "UX/UI Product Designer"; roadmap = ["Master Figma & Prototyping", "Study behavioral psychology in UX", "Build 3 massive case studies"]; }
+                else if (sub === 'brand') { title = "Brand Identity Specialist"; roadmap = ["Study typography and color theory", "Master Adobe Illustrator & Photoshop", "Create comprehensive brand kits"]; }
+                else { title = "Motion & 3D Designer"; roadmap = ["Learn After Effects and Blender", "Study principles of animation", "Create interactive micro-interactions"]; }
+            } else if (ind === 'sci') {
+                if (sub === 'bio') { title = "Biomedical Researcher"; roadmap = ["Study Genetics & Molecular Biology", "Master lab techniques and data analysis", "Publish research findings"]; }
+                else if (sub === 'chem') { title = "Material Scientist / Chemist"; roadmap = ["Learn organic chemistry & compound synthesis", "Understand industrial material science", "Train in safety protocols and testing"]; }
+                else { title = "Applied Physicist"; roadmap = ["Master Mathematics & Classical Mechanics", "Study Quantum Physics and Relativity", "Learn computational modeling tools"]; }
+            } else if (ind === 'food') {
+                if (sub === 'chef') { title = "Executive Chef"; roadmap = ["Master knife skills and culinary techniques", "Develop unique flavor profiles and menus", "Gain experience in high-end kitchens"]; }
+                else if (sub === 'foodtech') { title = "Food Technologist"; roadmap = ["Study food microbiology and chemistry", "Learn quality control processes", "Develop sustainable food preserving methods"]; }
+                else { title = "Restaurant Entrepreneur"; roadmap = ["Learn hospitality and supply chain management", "Master P&L and food cost analysis", "Implement effective marketing strategies"]; }
+            } else if (ind === 'health') {
+                if (sub === 'care') { title = "Healthcare Provider"; roadmap = ["Complete required medical/nursing courses", "Gain clinical volunteering experience", "Obtain necessary medical licenses"]; }
+                else if (sub === 'admin') { title = "Healthcare Administrator"; roadmap = ["Study public health and hospital management", "Understand healthcare compliance (HIPAA)", "Develop leadership and operational skills"]; }
+                else { title = "Health-Tech Innovator"; roadmap = ["Learn medical data compliance", "Study intersection of AI and diagnostics", "Develop digital wellness solutions"]; }
+            } else if (ind === 'edu') {
+                if (sub === 'teach') { title = "Academic Educator"; roadmap = ["Obtain subject matter expertise", "Acquire a teaching license or credential", "Develop engaging curriculum frameworks"]; }
+                else if (sub === 'edtech') { title = "EdTech Product Creator"; roadmap = ["Study instructional design principles", "Learn basic coding or no-code tools", "Create an online course or educational platform"]; }
+                else { title = "Career Counselor"; roadmap = ["Study psychology and human development", "Gain counseling certification", "Build mentorship and coaching programs"]; }
+            } else if (ind === 'eng') {
+                if (sub === 'mech') { title = "Mechanical Engineer"; roadmap = ["Master CAD software (SolidWorks)", "Study thermodynamics and fluid mechanics", "Work on hands-on prototype building"]; }
+                else if (sub === 'civil') { title = "Civil Engineer / Architect"; roadmap = ["Learn structural analysis", "Master AutoCAD and Revit", "Understand sustainable building protocols"]; }
+                else { title = "Electrical Engineer"; roadmap = ["Study circuit design and microcontrollers", "Learn about renewable energy systems", "Develop skills in industrial automation"]; }
+            } else if (ind === 'biz' || ind === 'fin' || ind === 'mkt') {
+                if (sub === 'lead') { title = "Strategic Operations Manager"; roadmap = ["Study Agile and project management", "Enhance cross-functional communication", "Master structural scaling strategies"]; }
+                else if (sub === 'growth') { title = "Growth Hacker"; roadmap = ["Master data analytics tools (GA4)", "Learn conversion rate optimization", "Understand consumer psychology"]; }
+                else { title = "Financial / Data Analyst"; roadmap = ["Learn Python for financial modeling", "Study market trends and Excel mastery", "Focus on algorithmic logic"]; }
             } else {
-                title = "Strategic Growth Manager";
-                roadmap = ["Learn cross-functional Agile methods", "Master analytical software (GA4, Mixpanel)", "Optimize team communication flows"];
+                title = "Strategic Operations Professional";
+                roadmap = ["Learn cross-functional management", "Master analytical software", "Optimize team communication flows"];
             }
 
-            if (lvl === 'beg') roadmap.unshift("Start with structured fundamental courses (Udemy/Coursera).");
+            if (lvl === 'beg') roadmap.unshift("Start with structured fundamental courses or a degree program.");
             desc = `Based on your preference for ${env === 'rem' ? 'remote' : 'structured'} work environments, the role of ${title} aligns perfectly with your goals.`;
 
             return { title, desc, roadmap, score };
